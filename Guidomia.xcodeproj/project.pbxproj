@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABA30AA12796BB890037B5E7 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = ABA30AA02796BB890037B5E7 /* car_list.json */; };
+		ABA30AA42796BCF60037B5E7 /* CarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA30AA32796BCF60037B5E7 /* CarImages.swift */; };
+		ABA30AA62796C0AE0037B5E7 /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA30AA52796C0AE0037B5E7 /* CarCell.swift */; };
 		ABEF66DB27969D6A00A055BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF66DA27969D6A00A055BF /* AppDelegate.swift */; };
 		ABEF66DD27969D6A00A055BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF66DC27969D6A00A055BF /* SceneDelegate.swift */; };
 		ABEF66DF27969D6A00A055BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF66DE27969D6A00A055BF /* ViewController.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ABA30AA02796BB890037B5E7 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
+		ABA30AA32796BCF60037B5E7 /* CarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImages.swift; sourceTree = "<group>"; };
+		ABA30AA52796C0AE0037B5E7 /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
 		ABEF66D727969D6900A055BF /* Guidomia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidomia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEF66DA27969D6A00A055BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABEF66DC27969D6A00A055BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +64,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ABA30A9A2796B99C0037B5E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABA30AA32796BCF60037B5E7 /* CarImages.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABA30A9B2796B9B50037B5E7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ABA30A9C2796B9DC0037B5E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABA30AA52796C0AE0037B5E7 /* CarCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABA30A9D2796BA1C0037B5E7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABEF66DE27969D6A00A055BF /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ABA30A9E2796BA2D0037B5E7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		ABA30A9F2796BB790037B5E7 /* SampleJSONFIle */ = {
+			isa = PBXGroup;
+			children = (
+				ABA30AA02796BB890037B5E7 /* car_list.json */,
+			);
+			path = SampleJSONFIle;
+			sourceTree = "<group>";
+		};
+		ABA30AA22796BC1C0037B5E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ABEF66E527969D8600A055BF /* LaunchScreen.storyboard */,
+				ABEF66E027969D6A00A055BF /* Main.storyboard */,
+				ABEF66E327969D8600A055BF /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		ABEF66CE27969D6800A055BF = {
 			isa = PBXGroup;
 			children = (
@@ -79,12 +141,15 @@
 		ABEF66D927969D6900A055BF /* Guidomia */ = {
 			isa = PBXGroup;
 			children = (
+				ABA30AA22796BC1C0037B5E7 /* Resources */,
+				ABA30A9F2796BB790037B5E7 /* SampleJSONFIle */,
+				ABA30A9E2796BA2D0037B5E7 /* Helper */,
+				ABA30A9D2796BA1C0037B5E7 /* ViewControllers */,
+				ABA30A9C2796B9DC0037B5E7 /* Views */,
+				ABA30A9B2796B9B50037B5E7 /* ViewModel */,
+				ABA30A9A2796B99C0037B5E7 /* Model */,
 				ABEF66DA27969D6A00A055BF /* AppDelegate.swift */,
 				ABEF66DC27969D6A00A055BF /* SceneDelegate.swift */,
-				ABEF66DE27969D6A00A055BF /* ViewController.swift */,
-				ABEF66E027969D6A00A055BF /* Main.storyboard */,
-				ABEF66E327969D8600A055BF /* Assets.xcassets */,
-				ABEF66E527969D8600A055BF /* LaunchScreen.storyboard */,
 				ABEF66E827969D8600A055BF /* Info.plist */,
 			);
 			path = Guidomia;
@@ -182,6 +247,7 @@
 			files = (
 				ABEF66E727969D8600A055BF /* LaunchScreen.storyboard in Resources */,
 				ABEF66E427969D8600A055BF /* Assets.xcassets in Resources */,
+				ABA30AA12796BB890037B5E7 /* car_list.json in Resources */,
 				ABEF66E227969D6A00A055BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +268,8 @@
 			files = (
 				ABEF66DF27969D6A00A055BF /* ViewController.swift in Sources */,
 				ABEF66DB27969D6A00A055BF /* AppDelegate.swift in Sources */,
+				ABA30AA42796BCF60037B5E7 /* CarImages.swift in Sources */,
+				ABA30AA62796C0AE0037B5E7 /* CarCell.swift in Sources */,
 				ABEF66DD27969D6A00A055BF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
