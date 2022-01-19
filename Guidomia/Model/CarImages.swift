@@ -21,7 +21,7 @@ public enum CarImages: String {
         
         switch self {
         case .mercedes:
-            imageName = "Mercedez"
+            imageName = "Mercedes"
         case .bmw:
             imageName = "BMW"
         case .toyota:

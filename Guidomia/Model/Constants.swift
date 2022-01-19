@@ -15,7 +15,7 @@ struct Constants {
     static let priceString = "Price : "
     static let thousand: String = "k"
     static let viewRadius: CGFloat = 6.0
-    static let headerHeight: CGFloat = 400.0
+    static let headerHeight: CGFloat = 100.0
     static let rowHeight: CGFloat = 115.0
     static let bulletPointAndSpace: String = "•  "
     static let nextLine: String = "\n"

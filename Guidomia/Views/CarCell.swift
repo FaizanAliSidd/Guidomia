@@ -11,37 +11,30 @@ import UIKit
 class CarCell: UITableViewCell {
     
     static let identifier = "CarCell"
-    //@IBOutlet weak var carName: UILabel!
-    //@IBOutlet weak var carPrice: UILabel!
-    //@IBOutlet weak var carImageView: UIImageView!
-    //@IBOutlet var carRating: UILabel!
+    
     @IBOutlet var proLabel: UILabel!
     @IBOutlet var conLabel: UILabel!
     @IBOutlet var proDetails: UILabel!
     @IBOutlet var conDetails: UILabel!
     
     public var car: Cars? {
+        
         didSet { self.displayData() }
     }
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
     }
     
     override func prepareForReuse() {
-        super.prepareForReuse()
-       // [carName, carPrice, proDetails, conDetails].forEach({$0?.text = ""})
-        //carImageView.image = nil
         
+        super.prepareForReuse()
         [proDetails, conDetails].forEach({$0?.text = ""})
     }
     
     private func displayData() {
-       // carName.text = car?.carModelAndMake()
-        //carPrice.text = car?.carDisplayPrice()
-        //carImageView.image = car?.carImage()
-        //carRating.text = car?.carRating()
-        
+      
         proLabel.isHidden = car?.carProsHide() ?? false
         conLabel.isHidden = car?.carConsHide() ?? false
         
