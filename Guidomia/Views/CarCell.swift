@@ -2,7 +2,7 @@
 //  CarCell.swift
 //  Guidomia
 //
-//  Created by William Scott on 18/01/22.
+//  Created by Faizan Ali on 18/01/22.
 //  Copyright © 2022 Faizan. All rights reserved.
 //
 

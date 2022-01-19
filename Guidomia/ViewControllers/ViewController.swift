@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Guidomia
 //
-//  Created by William Scott on 18/01/22.
+//  Created by Faizan Ali on 18/01/22.
 //  Copyright © 2022 Faizan. All rights reserved.
 //
 
@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var filterView: UIView!
     
     var viewModel: CarVM?
-    
+    var hiddenSections = Set<Int>()
+    var header = Bundle.main.loadNibNamed(CarViewHeaderCell.nibName, owner: self, options: nil)?.first as! CarViewHeaderCell
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -37,6 +38,14 @@ class ViewController: UIViewController {
         //let carHeaderView = UINib(nibName: CarViewHeaderCell.nibName, bundle: nil)
         //self.tableView.register(carHeaderView, forCellReuseIdentifier: CarViewHeaderCell.identifier)
     }
+    @objc
+    private func hideSection(sender: UITapGestureRecognizer) {
+        
+        print("Section tapped \(sender.view?.tag ?? 0)")
+        // Create section let
+        // Add indexPathsForSection method
+        // Logic to add/remove sections to/from hiddenSections, and delete and insert functionality for tableView
+    }
 
 }
 
@@ -44,6 +53,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.hiddenSections.contains(section) {
+                return 0
+            }
         return 0
     }
     
@@ -67,10 +79,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed(CarViewHeaderCell.nibName, owner: self, options: nil)?.first as! CarViewHeaderCell
         header.car = viewModel?.datasource?[section]
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideSection(sender:)))
+        header.contentView.tag = section
+        //tapRecognizer.delegate = self
+        header.addGestureRecognizer(tapRecognizer)
         return header
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        tableView.reloadSections([indexPath.section], with: .none)
     }
 }
 
