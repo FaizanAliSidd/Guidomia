@@ -20,6 +20,7 @@ class CarViewController: UIViewController {
     @IBOutlet weak var modelTxtField: UITextField!
     var viewModel: CarVM?
     var hiddenSections = Set<Int>()
+    let dropDown = MakeDropDown()
     var header = Bundle.main.loadNibNamed(CarViewHeaderCell.nibName, owner: self, options: nil)?.first as! CarViewHeaderCell
     override func viewDidLoad() {
         
@@ -28,6 +29,14 @@ class CarViewController: UIViewController {
         self.navigationController?.setBarColor()
         self.navigationController?.setLeftTitle(label: Constants.navigationTitle)
         prepareViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        //Call this in viewDidAppear to get correct frame values
+        setUpDropDownForMakeView(dropDownView: makeShadowView)
+        setUpDropDownForMakeView(dropDownView: modelShadowlView)
     }
   
     private func prepareViews() {
@@ -53,6 +62,31 @@ class CarViewController: UIViewController {
         self.tableView.register(carHeaderView, forCellReuseIdentifier: CarViewHeaderCell.identifier)
     }
     
+    func setUpDropDownForMakeView(dropDownView : UIView){
+        
+        dropDown.makeDropDownIdentifier = DropDownCell.dropDownIdentifier
+        dropDown.cellReusableIdentifier = DropDownCell.identifier
+        dropDown.makeDropDownDataSourceProtocol = self
+        dropDown.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: dropDownView) ?? dropDownView.frame), offset: 2)
+        dropDown.nib = UINib(nibName: DropDownCell.nibName, bundle: nil)
+        dropDown.setRowHeight(height: DropDownCell.dropDownRowHeight)
+        dropDown.width = dropDownView.frame.width
+        self.view.addSubview(dropDown)
+    }
+    
+    func setUpDropDownForModelView(dropDownView : UIView){
+           
+           dropDown.makeDropDownIdentifier = DropDownCell.dropDownIdentifier
+           dropDown.cellReusableIdentifier = DropDownCell.identifier
+           dropDown.makeDropDownDataSourceProtocol = self
+           dropDown.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: dropDownView) ?? dropDownView.frame), offset: 2)
+           dropDown.nib = UINib(nibName: DropDownCell.nibName, bundle: nil)
+           dropDown.setRowHeight(height: DropDownCell.dropDownRowHeight)
+           dropDown.width = dropDownView.frame.width
+           self.view.addSubview(dropDown)
+       }
+
+    
     func addShadow(view : UIView, opacity: Float = 1.0, color: UIColor, offset: CGSize, radius: CGFloat) {
         
         view.layer.shadowOpacity = opacity
@@ -63,9 +97,15 @@ class CarViewController: UIViewController {
     }
     
     @IBAction func makeBtnAction(_ sender: UIButton) {
+        
+        print("make filter btn")
+        self.dropDown.showDropDown(height: DropDownCell.dropDownRowHeight * 5)
     }
     
     @IBAction func modelBtnAction(_ sender: UIButton) {
+    
+        print("model filter btn")
+        self.dropDown.showDropDown(height: DropDownCell.dropDownRowHeight * 5)
     }
 }
 
@@ -101,7 +141,6 @@ extension CarViewController: UITableViewDelegate, UITableViewDataSource {
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
             self.tableView.reloadData()
         }
-
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -115,6 +154,32 @@ extension CarViewController: CarVMDelegate {
     func updateCarModel() {
         
         self.tableView.reloadData()
+    }
+}
+
+extension CarViewController: MakeDropDownDataSourceProtocol{
+    
+    func getDataToDropDown(cell: UITableViewCell, indexPos: Int, makeDropDownIdentifier: String) {
+        
+        if makeDropDownIdentifier == DropDownCell.dropDownIdentifier{
+            
+            let dropDownCell = cell as! DropDownCell
+            dropDownCell.dropDownTitle.text = "Test"
+            //customCell..text = self.cityModelArr[indexPos].countryName
+        }
+    }
+    
+    func numberOfRows(makeDropDownIdentifier: String) -> Int {
+        
+        //return self.cityModelArr.count
+        return 5
+    }
+    
+    func selectItemInDropDown(indexPos: Int, makeDropDownIdentifier: String) {
+        
+        //self.makeTxtField.text = "Country: \(self.cityModelArr[indexPos].countryName))"
+        self.makeTxtField.text = "Test"
+        self.dropDown.hideDropDown()
     }
 }
 

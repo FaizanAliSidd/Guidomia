@@ -14,6 +14,10 @@
 		492F2BB227971B8000FD0852 /* CarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F2BB127971B8000FD0852 /* CarVM.swift */; };
 		492F2BBA27972D8C00FD0852 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F2BB927972D8C00FD0852 /* NSAttributedString.swift */; };
 		4952AEFB2799745E00D9B2BE /* NavBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AEFA2799745E00D9B2BE /* NavBarExtension.swift */; };
+		4952AEFF2799AAEE00D9B2BE /* MakeDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AEFE2799AAEE00D9B2BE /* MakeDropDown.swift */; };
+		4952AF042799AE9D00D9B2BE /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AF022799AE9D00D9B2BE /* DropDownCell.swift */; };
+		4952AF052799AE9D00D9B2BE /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4952AF032799AE9D00D9B2BE /* DropDownCell.xib */; };
+		4952AF072799BBEE00D9B2BE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AF062799BBEE00D9B2BE /* UIViewExtension.swift */; };
 		ABA30AA12796BB890037B5E7 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = ABA30AA02796BB890037B5E7 /* car_list.json */; };
 		ABA30AA42796BCF60037B5E7 /* CarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA30AA32796BCF60037B5E7 /* CarImages.swift */; };
 		ABEF66DB27969D6A00A055BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF66DA27969D6A00A055BF /* AppDelegate.swift */; };
@@ -43,6 +47,10 @@
 		492F2BB127971B8000FD0852 /* CarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarVM.swift; path = Guidomia/ViewModel/CarVM.swift; sourceTree = SOURCE_ROOT; };
 		492F2BB927972D8C00FD0852 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSAttributedString.swift; path = Guidomia/Helper/NSAttributedString.swift; sourceTree = SOURCE_ROOT; };
 		4952AEFA2799745E00D9B2BE /* NavBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarExtension.swift; sourceTree = "<group>"; };
+		4952AEFE2799AAEE00D9B2BE /* MakeDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeDropDown.swift; sourceTree = "<group>"; };
+		4952AF022799AE9D00D9B2BE /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		4952AF032799AE9D00D9B2BE /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		4952AF062799BBEE00D9B2BE /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		ABA30AA02796BB890037B5E7 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
 		ABA30AA32796BCF60037B5E7 /* CarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImages.swift; sourceTree = "<group>"; };
 		ABEF66D727969D6900A055BF /* Guidomia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidomia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				4952AEFA2799745E00D9B2BE /* NavBarExtension.swift */,
+				4952AF062799BBEE00D9B2BE /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -105,8 +114,18 @@
 			children = (
 				492F2BAD2797123200FD0852 /* CarViewHeaderCell.swift */,
 				492F2BAE2797123200FD0852 /* CarViewHeaderCell.xib */,
+				4952AF022799AE9D00D9B2BE /* DropDownCell.swift */,
+				4952AF032799AE9D00D9B2BE /* DropDownCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		4952AEFD2799AAD200D9B2BE /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				4952AEFE2799AAEE00D9B2BE /* MakeDropDown.swift */,
+			);
+			path = DropDown;
 			sourceTree = "<group>";
 		};
 		ABA30A9A2796B99C0037B5E7 /* Model */ = {
@@ -138,6 +157,7 @@
 		ABA30A9E2796BA2D0037B5E7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				4952AEFD2799AAD200D9B2BE /* DropDown */,
 				492F2BAB2796FB5700FD0852 /* Constants.swift */,
 				492F2BB927972D8C00FD0852 /* NSAttributedString.swift */,
 			);
@@ -279,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4952AF052799AE9D00D9B2BE /* DropDownCell.xib in Resources */,
 				ABEF66E727969D8600A055BF /* LaunchScreen.storyboard in Resources */,
 				ABEF66E427969D8600A055BF /* Assets.xcassets in Resources */,
 				ABA30AA12796BB890037B5E7 /* car_list.json in Resources */,
@@ -301,11 +322,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4952AF072799BBEE00D9B2BE /* UIViewExtension.swift in Sources */,
 				ABEF66DF27969D6A00A055BF /* CarViewController.swift in Sources */,
 				ABEF66DB27969D6A00A055BF /* AppDelegate.swift in Sources */,
 				4952AEFB2799745E00D9B2BE /* NavBarExtension.swift in Sources */,
 				ABA30AA42796BCF60037B5E7 /* CarImages.swift in Sources */,
+				4952AEFF2799AAEE00D9B2BE /* MakeDropDown.swift in Sources */,
 				492F2BB227971B8000FD0852 /* CarVM.swift in Sources */,
+				4952AF042799AE9D00D9B2BE /* DropDownCell.swift in Sources */,
 				492F2BAF2797123200FD0852 /* CarViewHeaderCell.swift in Sources */,
 				492F2BAC2796FB5700FD0852 /* Constants.swift in Sources */,
 				492F2BBA27972D8C00FD0852 /* NSAttributedString.swift in Sources */,
