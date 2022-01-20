@@ -16,10 +16,12 @@ struct Constants {
     static let prosString = "Pros : "
     static let consString = "Cons : "
     static let thousand: String = "k"
-    static let viewRadius: CGFloat = 6.0
+    static let viewRadius: CGFloat = 8.0
     static let headerHeight: CGFloat = 100.0
     static let rowHeight: CGFloat = 115.0
     static let bulletPointAndSpace: String = "•  "
     static let nextLine: String = "\n"
     static let lineSpaceBetweenBullets: CGFloat = 10.0
+    static let navigationTitle = "GUIDOMIA"
+    static let navigationFont = "TimesNewRomanPS-BoldMT"
 }

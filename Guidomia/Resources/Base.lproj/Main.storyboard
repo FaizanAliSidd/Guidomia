@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--GUIDOMIA-->
+        <!--Car View Controller-->
         <scene sceneID="9UA-WY-y1A">
             <objects>
-                <viewController id="wLU-e8-bsK" customClass="ViewController" customModule="Guidomia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wLU-e8-bsK" customClass="CarViewController" customModule="Guidomia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cGH-OA-ddw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,7 +74,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="XNC-z6-8Gy" secondAttribute="trailing" constant="8" id="EYW-nW-WdC"/>
                                                     <constraint firstItem="INL-Jn-4xQ" firstAttribute="centerY" secondItem="bh8-fg-Ocs" secondAttribute="centerY" id="N76-DO-iER"/>
@@ -105,7 +105,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="k6X-O3-Vva" firstAttribute="width" secondItem="xwW-1T-99g" secondAttribute="width" id="0QN-f5-9hz"/>
                                                     <constraint firstItem="Y3Z-aC-MFo" firstAttribute="leading" secondItem="xwW-1T-99g" secondAttribute="leading" constant="17" id="4KX-38-ei7"/>
@@ -184,7 +184,7 @@
                             <constraint firstItem="obG-We-nsf" firstAttribute="top" secondItem="NzV-xa-dGp" secondAttribute="bottom" id="pUs-N6-ggt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="GUIDOMIA" id="bs5-qI-SQt"/>
+                    <navigationItem key="navigationItem" id="bs5-qI-SQt"/>
                     <connections>
                         <outlet property="filterView" destination="11p-Eh-JcU" id="WQ8-ie-LVR"/>
                         <outlet property="makeShadowView" destination="GFY-97-1k9" id="lrh-Ap-qda"/>

@@ -30,16 +30,16 @@ class CarViewHeaderCell: UITableViewCell {
     }
     
     public var isExpanded: Bool? {
-        didSet {
-            if self.isExpanded!{
-                self.displayProsConsDataData()
+            didSet {
+                if self.isExpanded!{
+                    self.displayProsConsDataData()
+                }
+                else{
+                    self.hideProsConsDataData()
+                }
+                
             }
-            else{
-                self.hideProsConsDataData()
-            }
-            
         }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

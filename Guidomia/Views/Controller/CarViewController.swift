@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CarViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    let offset = CGSize(width: 0, height: 0)
     @IBOutlet weak var makeShadowView: UIView!
     @IBOutlet weak var modelShadowlView: UIView!
     @IBOutlet weak var filterView: UIView!
@@ -24,30 +25,43 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         viewModel = CarVM()
+        self.navigationController?.setBarColor()
+        self.navigationController?.setLeftTitle(label: Constants.navigationTitle)
         prepareViews()
     }
-    
+  
     private func prepareViews() {
         
         tableView.separatorStyle = .none
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
-        //tableView.backgroundColor = .clear
         tableView.estimatedRowHeight = Constants.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
-        [modelShadowlView, makeShadowView, filterView].forEach({ $0?.layer.cornerRadius = Constants.viewRadius;
-                                                    $0?.layer.masksToBounds = true })
+        self.addShadow(view: makeShadowView,
+                      opacity: 0.5,
+                      color: .black,
+                      offset: offset,
+                      radius: 3)
         
+        self.addShadow(view: modelShadowlView,
+                              opacity: 0.5,
+                              color: .black,
+                              offset: offset,
+                              radius: 3)
+        
+        [modelShadowlView, makeShadowView, filterView].forEach({ $0?.layer.cornerRadius = Constants.viewRadius; })
         let carHeaderView = UINib(nibName: CarViewHeaderCell.nibName, bundle: nil)
         self.tableView.register(carHeaderView, forCellReuseIdentifier: CarViewHeaderCell.identifier)
     }
-    @objc
-    private func hideSection(sender: UITapGestureRecognizer) {
+    
+    func addShadow(view : UIView, opacity: Float = 1.0, color: UIColor, offset: CGSize, radius: CGFloat) {
         
-        print("Section tapped \(sender.view?.tag ?? 0)")
-        // Create section let
-        // Add indexPathsForSection method
-        // Logic to add/remove sections to/from hiddenSections, and delete and insert functionality for tableView
+        view.layer.shadowOpacity = opacity
+        view.layer.shadowOffset = offset
+        view.layer.shadowColor = color.cgColor
+        view.layer.shadowRadius = radius
+        view.layer.masksToBounds = false
     }
+    
     @IBAction func makeBtnAction(_ sender: UIButton) {
     }
     
@@ -55,10 +69,11 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension CarViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         viewModel?.datasource?.count ?? 0
     }
     
@@ -73,36 +88,32 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return UITableView.automaticDimension
     }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
         guard let cell = tableView.cellForRow(at: indexPath) as?  CarViewHeaderCell else { return }
         cell.isExpanded = true
-      
-        //let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
-
-        //let currentCell = tableView.cellForRow(at: indexPath!) as! CarViewHeaderCell
         viewModel?.setExpandCollapseStatus(indexPath: indexPath)
-        
-        
         UIView.animate(withDuration: 0.3) {
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
             self.tableView.reloadData()
         }
-       
 
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return CGFloat.leastNonzeroMagnitude
     }
 }
 //MARK:- CarVM Delegate -
-extension ViewController: CarVMDelegate {
+extension CarViewController: CarVMDelegate {
     
     func updateCarModel() {
+        
         self.tableView.reloadData()
     }
 }
