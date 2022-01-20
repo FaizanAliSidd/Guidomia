@@ -53,6 +53,7 @@ struct Cars: Codable {
     func carConsHide() -> Bool {
         return consList.count == 0 ? true: false
     }
+    
 
     func carImage() -> UIImage {
         

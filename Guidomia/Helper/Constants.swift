@@ -13,6 +13,8 @@ struct Constants {
     static let star: String = "★"
     static let space: String = " "
     static let priceString = "Price : "
+    static let prosString = "Pros : "
+    static let consString = "Cons : "
     static let thousand: String = "k"
     static let viewRadius: CGFloat = 6.0
     static let headerHeight: CGFloat = 100.0

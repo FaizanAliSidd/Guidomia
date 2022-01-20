@@ -8,14 +8,33 @@
 
 import Foundation
 
-final class CarVM {
-    public var datasource: [Cars]?
+protocol CarVMDelegate {
+    func updateCarModel()
+}
 
-    init() {
-        datasource = loadJson(filename: Constants.carList)
+final class CarVM {
+    
+    public var datasource: [Cars]?
+    private var selectedRow = IndexPath(row: 0, section: 0)
+    var isExpandStatus = [Bool]()
+    var CarVMDelegate: CarVMDelegate? {
+        didSet {
+            //datasource?.enumerated().forEach({ self.isExpandStatus.append($0.0 == 0) })
+            //self.CarVMDelegate?.updateCarModel()
+        }
     }
     
+    init() {
+        
+        datasource = loadJson(filename: Constants.carList)
+        datasource?.enumerated().forEach({ self.isExpandStatus.append($0.0 == 0) })
+    }
+    
+    
+    
+    
     func loadJson(filename fileName: String) -> [Cars]? {
+        
         if let jsonUrl = Bundle.main.url(forResource: fileName, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: jsonUrl)
@@ -27,5 +46,16 @@ final class CarVM {
             }
         }
         return nil
+    }
+    
+    func setExpandCollapseStatus(indexPath: IndexPath){
+        
+        if self.selectedRow == indexPath { return }
+        
+        self.selectedRow = indexPath
+        self.isExpandStatus.enumerated().forEach({ self.isExpandStatus[$0.0] = false })
+        self.isExpandStatus[indexPath.row] = true
+        
+        print(isExpandStatus)
     }
 }
