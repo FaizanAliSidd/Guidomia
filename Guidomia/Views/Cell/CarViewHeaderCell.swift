@@ -30,20 +30,19 @@ class CarViewHeaderCell: UITableViewCell {
     }
     
     public var isExpanded: Bool? {
-            didSet {
-                if self.isExpanded!{
-                    self.displayProsConsDataData()
-                }
-                else{
-                    self.hideProsConsDataData()
-                }
-                
+        didSet {
+            if self.isExpanded!{
+                self.displayProsConsDataData()
+            }
+            else{
+                self.hideProsConsDataData()
             }
         }
+    }
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
-        // Initialization code
     }
     override func prepareForReuse() {
         
@@ -51,14 +50,18 @@ class CarViewHeaderCell: UITableViewCell {
         [carName, carPrice, proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = ""})
         carImageView.image = nil
     }
+    
+    /// Display car details except pros and cons
     private func displayHeaderData() {
+        
         carName.text = car?.carModelAndMake()
         carPrice.text = car?.carDisplayPrice()
         carImageView.image = car?.carImage()
         carRating.text = car?.carRating()
         [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = ""})
-        
     }
+    
+    /// Display pros and cons data
     private func displayProsConsDataData() {
         
         proLabel.isHidden = car?.carProsHide() ?? false
@@ -77,15 +80,16 @@ class CarViewHeaderCell: UITableViewCell {
             }
         }
     }
+    
+    /// Hide pros and cons data
     private func hideProsConsDataData() {
         
         [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = ""})
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

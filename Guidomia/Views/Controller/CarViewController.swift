@@ -11,55 +11,64 @@ import UIKit
 class CarViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    let offset = CGSize(width: 0, height: 0)
     @IBOutlet weak var makeShadowView: UIView!
-    @IBOutlet weak var modelShadowlView: UIView!
+    @IBOutlet weak var modelShadowView: UIView!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var makeTxtField: UITextField!
-    
     @IBOutlet weak var modelTxtField: UITextField!
-    var viewModel: CarVM?
+    var viewModel: CarViewModel?
     var hiddenSections = Set<Int>()
     let dropDown = MakeDropDown()
-    var header = Bundle.main.loadNibNamed(CarViewHeaderCell.nibName, owner: self, options: nil)?.first as! CarViewHeaderCell
+    let dropDown2 = MakeDropDown()
+    let offset = CGSize(width: 0, height: 0)
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        viewModel = CarVM()
-        self.navigationController?.setBarColor()
-        self.navigationController?.setLeftTitle(label: Constants.navigationTitle)
+        viewModel = CarViewModel()
         prepareViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        //Call this in viewDidAppear to get correct frame values
-        setUpDropDownForMakeView(dropDownView: makeShadowView)
-        setUpDropDownForMakeView(dropDownView: modelShadowlView)
+      //  setUpDropDownForMakeView(dropDownView: makeShadowView)
+        setUpDropDownForModelView(dropDownView: modelShadowView)
     }
   
+    /// Prepare Views to load
     private func prepareViews() {
         
+        prepareNavBar()
+        prepareTableView()
+        addShadowAndCornerRadius()
+    }
+    
+    /// Prepare Navigation Bar
+    private func prepareNavBar() {
+        
+        self.navigationController?.setBarAppearance()
+        self.navigationController?.setNavBarTitle(label: Constants.navigationTitle)
+    }
+    
+    /// Prepare TableView to Show Car List
+    private func prepareTableView() {
+        
+        let carCellNib = UINib(nibName: CarViewHeaderCell.nibName, bundle: nil)
+        self.tableView.register(carCellNib, forCellReuseIdentifier: CarViewHeaderCell.identifier)
         tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.clear
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
         tableView.estimatedRowHeight = Constants.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
-        self.addShadow(view: makeShadowView,
-                      opacity: 0.5,
-                      color: .black,
-                      offset: offset,
-                      radius: 3)
+    }
+    
+    /// Add shadow and corner radius on filter view textfields
+    private func addShadowAndCornerRadius() {
         
-        self.addShadow(view: modelShadowlView,
-                              opacity: 0.5,
-                              color: .black,
-                              offset: offset,
-                              radius: 3)
-        
-        [modelShadowlView, makeShadowView, filterView].forEach({ $0?.layer.cornerRadius = Constants.viewRadius; })
-        let carHeaderView = UINib(nibName: CarViewHeaderCell.nibName, bundle: nil)
-        self.tableView.register(carHeaderView, forCellReuseIdentifier: CarViewHeaderCell.identifier)
+        makeShadowView.addShadow(opacity: Constants.shadowOpacity, color: .black, offset: offset, radius: Constants.shadowRadius)
+        modelShadowView.addShadow(opacity: Constants.shadowOpacity, color: .black, offset: offset, radius: Constants.shadowRadius)
+        [modelShadowView, makeShadowView, filterView].forEach({ $0?.layer.cornerRadius = Constants.viewRadius; })
     }
     
     func setUpDropDownForMakeView(dropDownView : UIView){
@@ -75,40 +84,40 @@ class CarViewController: UIViewController {
     }
     
     func setUpDropDownForModelView(dropDownView : UIView){
-           
-           dropDown.makeDropDownIdentifier = DropDownCell.dropDownIdentifier
-           dropDown.cellReusableIdentifier = DropDownCell.identifier
-           dropDown.makeDropDownDataSourceProtocol = self
-           dropDown.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: dropDownView) ?? dropDownView.frame), offset: 2)
-           dropDown.nib = UINib(nibName: DropDownCell.nibName, bundle: nil)
-           dropDown.setRowHeight(height: DropDownCell.dropDownRowHeight)
-           dropDown.width = dropDownView.frame.width
-           self.view.addSubview(dropDown)
-       }
-
-    
-    func addShadow(view : UIView, opacity: Float = 1.0, color: UIColor, offset: CGSize, radius: CGFloat) {
         
-        view.layer.shadowOpacity = opacity
-        view.layer.shadowOffset = offset
-        view.layer.shadowColor = color.cgColor
-        view.layer.shadowRadius = radius
-        view.layer.masksToBounds = false
+        dropDown2.makeDropDownIdentifier = DropDownCell.dropDownIdentifier
+        dropDown2.cellReusableIdentifier = DropDownCell.identifier
+        dropDown2.makeDropDownDataSourceProtocol = self
+        dropDown2.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: dropDownView) ?? dropDownView.frame), offset: 2)
+        dropDown2.nib = UINib(nibName: DropDownCell.nibName, bundle: nil)
+        dropDown2.setRowHeight(height: DropDownCell.dropDownRowHeight)
+        dropDown2.width = dropDownView.frame.width
+        self.view.addSubview(dropDown2)
     }
     
+    /// Make filter button action
     @IBAction func makeBtnAction(_ sender: UIButton) {
         
-        print("make filter btn")
+        dropDown.makeDropDownIdentifier = DropDownCell.dropDownIdentifier
+        dropDown.cellReusableIdentifier = DropDownCell.identifier
+        dropDown.makeDropDownDataSourceProtocol = self
+        dropDown.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: makeShadowView) ?? makeShadowView.frame), offset: 2)
+        dropDown.nib = UINib(nibName: DropDownCell.nibName, bundle: nil)
+        dropDown.setRowHeight(height: DropDownCell.dropDownRowHeight)
+        dropDown.width = makeShadowView.frame.width
+        self.view.addSubview(dropDown)
+        
         self.dropDown.showDropDown(height: DropDownCell.dropDownRowHeight * 5)
     }
     
+    /// Model filter button action
     @IBAction func modelBtnAction(_ sender: UIButton) {
     
-        print("model filter btn")
-        self.dropDown.showDropDown(height: DropDownCell.dropDownRowHeight * 5)
+        self.dropDown2.showDropDown(height: DropDownCell.dropDownRowHeight * 5)
     }
 }
 
+//MARK:- TableView DataSource and Delegate
 extension CarViewController: UITableViewDelegate, UITableViewDataSource {
     
     
@@ -147,16 +156,10 @@ extension CarViewController: UITableViewDelegate, UITableViewDataSource {
         
         return CGFloat.leastNonzeroMagnitude
     }
-}
-//MARK:- CarVM Delegate -
-extension CarViewController: CarVMDelegate {
     
-    func updateCarModel() {
-        
-        self.tableView.reloadData()
-    }
 }
 
+//MARK:- DropDown DataSource
 extension CarViewController: MakeDropDownDataSourceProtocol{
     
     func getDataToDropDown(cell: UITableViewCell, indexPos: Int, makeDropDownIdentifier: String) {

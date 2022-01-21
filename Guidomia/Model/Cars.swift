@@ -28,15 +28,18 @@ struct Cars: Codable {
     var prosList: [String]
     var rating: Int
     
+    /// Show car model and make
     func carModelAndMake() -> String {
         return make + Constants.space + model
     }
     
+    /// Display car price in a desired format
     func carDisplayPrice() -> String {
         let intPrice = Int((customerPrice/1000))
         return Constants.priceString + String(intPrice) + Constants.thousand
     }
     
+    /// Get car rating
     func carRating() -> String {
         var star = Constants.star
         let spacePlusStar = Constants.space + star
@@ -54,7 +57,7 @@ struct Cars: Codable {
         return consList.count == 0 ? true: false
     }
     
-
+    /// Get car image
     func carImage() -> UIImage {
         
         switch CarImages(rawValue: make) {

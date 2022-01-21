@@ -11,6 +11,7 @@ import UIKit
 
 extension UIView {
     
+    /// Used to get frame of view from superview point of view for dropdown
     func getConvertedFrame(fromSubview subview: UIView) -> CGRect? {
         // check if `subview` is a subview of self
         guard subview.isDescendant(of: self) else {
@@ -33,6 +34,16 @@ extension UIView {
         }
         
         return superview!.convert(frame, to: self)
+    }
+    
+    /// This will add shadow to the view
+    func addShadow(opacity: Float, color: UIColor, offset: CGSize, radius: CGFloat) {
+        
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
     }
     
 }
