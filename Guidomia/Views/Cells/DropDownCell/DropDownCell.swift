@@ -10,9 +10,6 @@ import UIKit
 
 class DropDownCell: UITableViewCell {
 
-    static let identifier = "dropDownCell"
-    static let nibName = "DropDownCell"
-    static let dropDownIdentifier = "FilterDropDown"
     static let dropDownRowHeight = 44.0
     @IBOutlet weak var dropDownTitle: UILabel!
     override func awakeFromNib() {

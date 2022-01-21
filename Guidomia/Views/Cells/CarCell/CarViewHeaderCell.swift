@@ -10,7 +10,6 @@ import UIKit
 
 class CarViewHeaderCell: UITableViewCell {
 
-    static let identifier = "CarHeaderCell"
     @IBOutlet weak var cellContainerView: UIView!
     @IBOutlet weak var carName: UILabel!
     @IBOutlet weak var carPrice: UILabel!
@@ -22,8 +21,7 @@ class CarViewHeaderCell: UITableViewCell {
     @IBOutlet var conDetails: UILabel!
     @IBOutlet weak var separatorLabel: UILabel!
     @IBOutlet weak var prosConsStackView: UIStackView!
-    static let headerID: String = "CarViewHeaderCell"
-    static let nibName = "CarViewHeaderCell"
+    
     
     public var car: Cars? {
         didSet { self.displayHeaderData() }
@@ -47,7 +45,7 @@ class CarViewHeaderCell: UITableViewCell {
     override func prepareForReuse() {
         
         super.prepareForReuse()
-        [carName, carPrice, proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = ""})
+        [carName, carPrice, proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = Constants.empty})
         carImageView.image = nil
     }
     
@@ -58,7 +56,7 @@ class CarViewHeaderCell: UITableViewCell {
         carPrice.text = car?.carDisplayPrice()
         carImageView.image = car?.carImage()
         carRating.text = car?.carRating()
-        [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = ""})
+        [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = Constants.empty})
     }
     
     /// Display pros and cons data
@@ -84,7 +82,7 @@ class CarViewHeaderCell: UITableViewCell {
     /// Hide pros and cons data
     private func hideProsConsDataData() {
         
-        [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = ""})
+        [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = Constants.empty})
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

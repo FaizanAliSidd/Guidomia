@@ -25,10 +25,10 @@ class MakeDropDown: UIView{
     
     //MARK: Variables
     // The DropDownIdentifier is to differentiate if you are using multiple Xibs
-    var makeDropDownIdentifier: String = DropDownCell.dropDownIdentifier
+    var makeDropDownIdentifier: String = Constants.dropDownIdentifier
     
     // Reuse Identifier of your custom cell
-    var cellReusableIdentifier: String = DropDownCell.identifier
+    var cellReusableIdentifier: String = Constants.dropDownCellIdentifier
     
     // Table View
     var dropDownTableView: UITableView?

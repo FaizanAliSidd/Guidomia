@@ -111,15 +111,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4952AEFC2799991D00D9B2BE /* Cell */ = {
+		4952AEFC2799991D00D9B2BE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				492F2BAD2797123200FD0852 /* CarViewHeaderCell.swift */,
-				492F2BAE2797123200FD0852 /* CarViewHeaderCell.xib */,
-				4952AF022799AE9D00D9B2BE /* DropDownCell.swift */,
-				4952AF032799AE9D00D9B2BE /* DropDownCell.xib */,
+				4952AF0B279A8D2F00D9B2BE /* CarCell */,
+				4952AF0C279A8D4000D9B2BE /* DropDownCell */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4952AEFD2799AAD200D9B2BE /* DropDown */ = {
@@ -138,6 +136,24 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		4952AF0B279A8D2F00D9B2BE /* CarCell */ = {
+			isa = PBXGroup;
+			children = (
+				492F2BAD2797123200FD0852 /* CarViewHeaderCell.swift */,
+				492F2BAE2797123200FD0852 /* CarViewHeaderCell.xib */,
+			);
+			path = CarCell;
+			sourceTree = "<group>";
+		};
+		4952AF0C279A8D4000D9B2BE /* DropDownCell */ = {
+			isa = PBXGroup;
+			children = (
+				4952AF022799AE9D00D9B2BE /* DropDownCell.swift */,
+				4952AF032799AE9D00D9B2BE /* DropDownCell.xib */,
+			);
+			path = DropDownCell;
+			sourceTree = "<group>";
+		};
 		ABA30A9A2796B99C0037B5E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				ABA30A9D2796BA1C0037B5E7 /* Controller */,
-				4952AEFC2799991D00D9B2BE /* Cell */,
+				4952AEFC2799991D00D9B2BE /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
