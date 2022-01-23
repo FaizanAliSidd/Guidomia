@@ -72,7 +72,6 @@ class CarViewController: UIViewController {
                                   color: .black,
                                   offset: offset,
                                   radius: Constants.shadowRadius)
-        
         [modelShadowView, makeShadowView, filterView].forEach({ $0?.layer.cornerRadius = Constants.viewRadius })
     }
     
@@ -82,6 +81,7 @@ class CarViewController: UIViewController {
         dropDown.makeDropDownDataSourceProtocol = self
     }
     
+    /// Method to hide dropdown and update dropdown shown status
     private func removeDropdown() {
         self.dropDown.hideDropDown()
         self.isDropdownShown = false
@@ -93,14 +93,9 @@ class CarViewController: UIViewController {
         if self.isDropdownShown {
             removeDropdown()
         }else{
-            self.isDropdownShown = true
-            dropDown.makeDropDownIdentifier = Constants.makeDropDownIdentifier
-            dropDown.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: makeShadowView) ?? makeShadowView.frame), offset: 2)
-            dropDown.nib = UINib(nibName: Constants.dropDownCellNibName, bundle: nil)
-            dropDown.setRowHeight(height: DropDownCell.dropDownRowHeight)
-            dropDown.width = makeShadowView.frame.width
-            self.view.addSubview(dropDown)
-            self.dropDown.showDropDown(height: DropDownCell.dropDownRowHeight * CGFloat(self.viewModel.makeArr.count))
+            self.showDropDownFor(view: makeShadowView,
+                                 withIdentifier: Constants.makeDropDownIdentifier,
+                                 dataArray: self.viewModel.makeArr)
         }
     }
     
@@ -110,15 +105,27 @@ class CarViewController: UIViewController {
         if self.isDropdownShown {
             removeDropdown()
         }else {
-            self.isDropdownShown = true
-            dropDown.makeDropDownIdentifier = Constants.modelDropDownIdentifier
-            dropDown.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: modelShadowView) ?? modelShadowView.frame), offset: 2)
-            dropDown.nib = UINib(nibName: Constants.dropDownCellNibName, bundle: nil)
-            dropDown.setRowHeight(height: DropDownCell.dropDownRowHeight)
-            dropDown.width = modelShadowView.frame.width
-            self.view.addSubview(dropDown)
-            self.dropDown.showDropDown(height: DropDownCell.dropDownRowHeight * CGFloat(self.viewModel.modelArr.count))
+            self.showDropDownFor(view: modelShadowView,
+                                 withIdentifier: Constants.modelDropDownIdentifier,
+                                 dataArray: self.viewModel.modelArr)
         }
+    }
+    
+    /// Method to show dropdown when button is pressed
+    /// - Parameters:
+    ///  - dropDownView: View for which dropdown iis to be added
+    ///  - identifier: dropdown identifier
+    ///  - dataArray: data array to be shown in the dropdown
+    private func showDropDownFor(view dropDownView : UIView, withIdentifier identifier : String,  dataArray : [String]) {
+        
+        self.isDropdownShown = true
+        dropDown.makeDropDownIdentifier = identifier
+        dropDown.setUpDropDown(viewPositionReference: (self.view.getConvertedFrame(fromSubview: dropDownView ) ?? dropDownView.frame), offset: 2)
+        dropDown.nib = UINib(nibName: Constants.dropDownCellNibName, bundle: nil)
+        dropDown.setRowHeight(height: DropDownCell.dropDownRowHeight)
+        dropDown.width = dropDownView.frame.width
+        self.view.addSubview(dropDown)
+        self.dropDown.showDropDown(height: DropDownCell.dropDownRowHeight * CGFloat(dataArray.count))
     }
 }
 

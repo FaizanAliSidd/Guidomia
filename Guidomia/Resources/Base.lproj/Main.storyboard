@@ -12,7 +12,7 @@
         <!--Car View Controller-->
         <scene sceneID="9UA-WY-y1A">
             <objects>
-                <viewController id="wLU-e8-bsK" customClass="CarViewController" customModule="Guidomia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CarVC" id="wLU-e8-bsK" customClass="CarViewController" customModule="Guidomia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cGH-OA-ddw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

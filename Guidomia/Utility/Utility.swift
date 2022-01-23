@@ -14,8 +14,9 @@ class Utility {
     static let shared = Utility()
     
     /// Used to load json data from file
-    ///  Parameter - Filename
-    ///  Returns - Array of data
+    /// - Parameters :
+    /// - resource: File name of json
+    /// - Returns : Data Object
     func loadJson<T: Decodable>(resource: String) -> [T] {
         
         guard let jsonUrl = Bundle.main.url(forResource: resource, withExtension: Constants.jsonExtension) else { return [] }

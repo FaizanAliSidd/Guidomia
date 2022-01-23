@@ -27,6 +27,7 @@ class CarViewHeaderCell: UITableViewCell {
         didSet { self.displayHeaderData() }
     }
     
+    /// Bool value to check if expanded or not
     public var isExpanded: Bool? {
         didSet {
             if self.isExpanded!{
@@ -39,9 +40,10 @@ class CarViewHeaderCell: UITableViewCell {
     }
     
     override func awakeFromNib() {
-        
         super.awakeFromNib()
     }
+    
+    /// Method to prepare cell contents for reuse
     override func prepareForReuse() {
         
         super.prepareForReuse()

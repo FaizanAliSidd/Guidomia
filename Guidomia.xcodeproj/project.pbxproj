@@ -19,6 +19,9 @@
 		4952AF052799AE9D00D9B2BE /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4952AF032799AE9D00D9B2BE /* DropDownCell.xib */; };
 		4952AF072799BBEE00D9B2BE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AF062799BBEE00D9B2BE /* UIViewExtension.swift */; };
 		4952AF0A279A72C500D9B2BE /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AF09279A72C500D9B2BE /* Utility.swift */; };
+		4978E4D4279D63B700A57A0D /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978E4D3279D63B700A57A0D /* JSONTests.swift */; };
+		4978E4D6279D65BF00A57A0D /* invalid_car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 4978E4D5279D65BF00A57A0D /* invalid_car_list.json */; };
+		4978E4D8279D65EC00A57A0D /* car_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978E4D7279D65EC00A57A0D /* car_list.swift */; };
 		ABA30AA12796BB890037B5E7 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = ABA30AA02796BB890037B5E7 /* car_list.json */; };
 		ABA30AA42796BCF60037B5E7 /* CarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA30AA32796BCF60037B5E7 /* CarImages.swift */; };
 		ABEF66DB27969D6A00A055BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF66DA27969D6A00A055BF /* AppDelegate.swift */; };
@@ -53,6 +56,9 @@
 		4952AF032799AE9D00D9B2BE /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		4952AF062799BBEE00D9B2BE /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		4952AF09279A72C500D9B2BE /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		4978E4D3279D63B700A57A0D /* JSONTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTests.swift; sourceTree = "<group>"; };
+		4978E4D5279D65BF00A57A0D /* invalid_car_list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid_car_list.json; sourceTree = "<group>"; };
+		4978E4D7279D65EC00A57A0D /* car_list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = car_list.swift; sourceTree = "<group>"; };
 		ABA30AA02796BB890037B5E7 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
 		ABA30AA32796BCF60037B5E7 /* CarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImages.swift; sourceTree = "<group>"; };
 		ABEF66D727969D6900A055BF /* Guidomia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidomia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,7 +245,10 @@
 		ABEF66F027969D8600A055BF /* GuidomiaTests */ = {
 			isa = PBXGroup;
 			children = (
+				4978E4D5279D65BF00A57A0D /* invalid_car_list.json */,
+				4978E4D7279D65EC00A57A0D /* car_list.swift */,
 				ABEF66F127969D8700A055BF /* GuidomiaTests.swift */,
+				4978E4D3279D63B700A57A0D /* JSONTests.swift */,
 				ABEF66F327969D8700A055BF /* Info.plist */,
 			);
 			path = GuidomiaTests;
@@ -339,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4978E4D6279D65BF00A57A0D /* invalid_car_list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +380,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4978E4D8279D65EC00A57A0D /* car_list.swift in Sources */,
 				ABEF66F227969D8700A055BF /* GuidomiaTests.swift in Sources */,
+				4978E4D4279D63B700A57A0D /* JSONTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
