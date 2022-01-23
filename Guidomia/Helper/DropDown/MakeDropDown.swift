@@ -17,10 +17,6 @@ protocol MakeDropDownDataSourceProtocol{
     func selectItemInDropDown(indexPos: Int, makeDropDownIdentifier: String)
 }
 
-extension MakeDropDownDataSourceProtocol{
-    func selectItemInDropDown(indexPos: Int, makeDropDownIdentifier: String) {}
-}
-
 class MakeDropDown: UIView{
     
     //MARK: Variables

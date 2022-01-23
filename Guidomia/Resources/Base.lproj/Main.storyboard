@@ -189,10 +189,12 @@
                     <navigationItem key="navigationItem" id="bs5-qI-SQt"/>
                     <connections>
                         <outlet property="filterView" destination="11p-Eh-JcU" id="WQ8-ie-LVR"/>
+                        <outlet property="makeButton" destination="INL-Jn-4xQ" id="vy1-ih-Cvs"/>
                         <outlet property="makeShadowView" destination="GFY-97-1k9" id="lrh-Ap-qda"/>
-                        <outlet property="makeTxtField" destination="XNC-z6-8Gy" id="9yG-wT-cOA"/>
+                        <outlet property="makeTextField" destination="XNC-z6-8Gy" id="RuS-a5-tIk"/>
+                        <outlet property="modelButton" destination="k6X-O3-Vva" id="Iax-a9-Ouc"/>
                         <outlet property="modelShadowView" destination="vOh-p8-oa0" id="RMg-Eg-Kdm"/>
-                        <outlet property="modelTxtField" destination="Y3Z-aC-MFo" id="dtq-lo-3tI"/>
+                        <outlet property="modelTextField" destination="Y3Z-aC-MFo" id="kkQ-T3-lWz"/>
                         <outlet property="tableView" destination="obG-We-nsf" id="4v0-cB-fNP"/>
                     </connections>
                 </viewController>

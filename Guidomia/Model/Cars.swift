@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Cars: Codable {
+struct Cars: Codable, Equatable {
     
     enum CodingKeys: String, CodingKey {
         case consList       = "consList"

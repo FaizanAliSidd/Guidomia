@@ -114,26 +114,93 @@ class GuidomiaTests: XCTestCase {
         XCTAssertNotEqual(invalidCarModekAndMake, actualCarModelAndMake)
     }
     
-    func testGetFrame() {
+    func testgetConvertedFrame() {
         
         let mainView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         let subView =  UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         mainView.addSubview(subView)
-        
         let expectedResult = CGRect(x: 0, y: 0, width: 200, height: 50)
-        let actualdResult = mainView.getConvertedFrame(fromSubview: subView)
+        let actualResult = mainView.getConvertedFrame(fromSubview: subView)
         
-        XCTAssertNotEqual(expectedResult, actualdResult)
+        let myView = UIView()
+        let subview = UIView()
+        let frame = myView.getConvertedFrame(fromSubview: subview)
+        XCTAssertNil(frame)
+        
+        subview.frame = CGRect(origin: .zero, size: .zero)
+        myView.addSubview(subview)
+        
+        let updatedFrame = myView.getConvertedFrame(fromSubview: subview)
+        
+        XCTAssertEqual(CGRect.zero, updatedFrame)
+        
+        XCTAssertTrue(actualResult == subView.frame)
+        XCTAssertNotEqual(expectedResult, actualResult)
+        
     }
     
     func testDropDownSelection() {
         
-        let dropDown = MakeDropDown()
-        dropDown.makeDropDownIdentifier = Constants.makeDropDownIdentifier
         let indexPath = IndexPath(row: 0, section: 0)
         carVC.selectItemInDropDown(indexPos: indexPath.row, makeDropDownIdentifier: Constants.makeDropDownIdentifier)
         
-        XCTAssertEqual(carVC.makeTxtField.text!, "Land Rover")
+        XCTAssertEqual(carVC.makeTextField.text!, "Land Rover")
+    }
+    
+    func testIfmakeButtonHasActionAssigned() {
+        
+        let makeButton: UIButton = carVC.makeButton
+        XCTAssertNotNil(makeButton, "Car View Controller does not have UIButton property")
+        
+        guard let makeButtonActions = makeButton.actions(forTarget: carVC, forControlEvent: .touchUpInside) else {
+            XCTFail("UIButton does not have actions assigned for Control Event .touchUpInside")
+            return
+        }
+     
+        XCTAssertTrue(makeButtonActions.contains("makeBtnAction:"))
+        
+        carVC.isDropdownShown = false
+        carVC.makeBtnAction(makeButton)
+        XCTAssertTrue(carVC.isDropdownShown)
+    }
+    
+    func testIfmodelButtonHasActionAssigned() {
+        
+        let modelButton: UIButton = carVC.modelButton
+        XCTAssertNotNil(modelButton, "Car View Controller does not have UIButton property")
+        
+        guard let modelButtonActions = modelButton.actions(forTarget: carVC, forControlEvent: .touchUpInside) else {
+            XCTFail("UIButton does not have actions assigned for Control Event .touchUpInside")
+            return
+        }
+        
+        XCTAssertTrue(modelButtonActions.contains("modelBtnAction:"))
+        carVC.isDropdownShown = false
+        carVC.modelBtnAction(modelButton)
+        XCTAssertTrue(carVC.isDropdownShown)
+    }
+    
+    func testClearFilter() {
+        carVC.makeTextField.text = "Benz"
+        carVC.modelTextField.text = "c700"
+        carVC.clearFilter()
+        XCTAssertEqual(carVC.makeTextField.text, carVC.modelTextField.text)
+    }
+    
+    func testJSONFile() {
+        let data: [Cars] =  Utility.shared.loadJson(resource: "WrongJSON")
+        XCTAssertTrue(data == [])
+        
+    }
+    
+    func testCarViewModel() {
+        let indexPath = IndexPath(row: 1, section: 1)
+        carViewModel.setExpandCollapseStatus(indexPath: indexPath)
+        XCTAssertTrue(carViewModel.isExpandStatus[1] == true)
+        
+        carViewModel.setExpandCollapseStatus(indexPath: indexPath)
+        XCTAssertTrue(carViewModel.isExpandStatus[1] == true)
+        
     }
     
     

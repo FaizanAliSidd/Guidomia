@@ -12,10 +12,8 @@ final class CarViewModel {
     
     public var datasource: [Cars] = [Cars]()
     public var fileteredArr = [Cars]()
-    
     var makeArr = [String]()
     var modelArr = [String]()
-    
     private var selectedRow = IndexPath(row: 0, section: 0)
     var isExpandStatus = [Bool]()
     

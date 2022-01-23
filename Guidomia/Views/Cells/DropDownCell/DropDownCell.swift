@@ -12,14 +12,5 @@ class DropDownCell: UITableViewCell {
 
     static let dropDownRowHeight = 44.0
     @IBOutlet weak var dropDownTitle: UILabel!
-    override func awakeFromNib() {
-        
-        super.awakeFromNib()
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        
-        super.setSelected(selected, animated: animated)
-    }
-    
 }

@@ -36,7 +36,6 @@ struct Constants {
     static let dropDownCellNibName = "DropDownCell"
     static let dropDownIdentifier = "FilterDropDown"
     static let carVCIdentifier = "CarVC"
-    
-    
+    static let clearFilterString = "Clear Filter"
 }
 

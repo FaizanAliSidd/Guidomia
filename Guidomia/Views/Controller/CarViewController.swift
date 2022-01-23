@@ -14,8 +14,10 @@ class CarViewController: UIViewController {
     @IBOutlet weak var makeShadowView: UIView!
     @IBOutlet weak var modelShadowView: UIView!
     @IBOutlet weak var filterView: UIView!
-    @IBOutlet weak var makeTxtField: UITextField!
-    @IBOutlet weak var modelTxtField: UITextField!
+    @IBOutlet weak var makeTextField: UITextField!
+    @IBOutlet weak var modelTextField: UITextField!
+    @IBOutlet weak var makeButton: UIButton!
+    @IBOutlet weak var modelButton: UIButton!
     var viewModel = CarViewModel()
     let dropDown = MakeDropDown()
     let offset = CGSize.zero
@@ -26,14 +28,9 @@ class CarViewController: UIViewController {
         super.viewDidLoad()
         viewModel = CarViewModel()
         prepareViews()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
         prepareDropDown()
     }
-  
+    
     /// Prepare Views to load
     private func prepareViews() {
         
@@ -93,6 +90,10 @@ class CarViewController: UIViewController {
         if self.isDropdownShown {
             removeDropdown()
         }else{
+            if self.viewModel.fileteredArr.count < self.viewModel.datasource.count && !self.viewModel.makeArr.contains(Constants.clearFilterString) {
+                
+                self.viewModel.makeArr.insert(Constants.clearFilterString, at: 0)
+            }
             self.showDropDownFor(view: makeShadowView,
                                  withIdentifier: Constants.makeDropDownIdentifier,
                                  dataArray: self.viewModel.makeArr)
@@ -198,18 +199,24 @@ extension CarViewController: MakeDropDownDataSourceProtocol{
     func selectItemInDropDown(indexPos: Int, makeDropDownIdentifier: String) {
         
         if makeDropDownIdentifier == Constants.makeDropDownIdentifier {
-            self.makeTxtField.text = self.viewModel.makeArr[indexPos]
-            self.filterArrayWith(title: self.viewModel.makeArr[indexPos], makeDropDownIdentifier: makeDropDownIdentifier)
-            self.viewModel.modelArr = self.viewModel.fileteredArr.map({ car -> String in
-                if car.make == self.viewModel.makeArr[indexPos] {
-                    return car.model
-                }else {
-                    return ""
-                }
-            })
-            self.modelTxtField.text = Constants.empty
+            if self.viewModel.makeArr[indexPos] != Constants.clearFilterString {
+                self.makeTextField.text = self.viewModel.makeArr[indexPos]
+                self.filterArrayWith(title: self.viewModel.makeArr[indexPos], makeDropDownIdentifier: makeDropDownIdentifier)
+                self.viewModel.modelArr = self.viewModel.fileteredArr.map({ car -> String in
+                    if car.make == self.viewModel.makeArr[indexPos] {
+                        return car.model
+                    }else {
+                        return ""
+                    }
+                })
+                self.modelTextField.text = Constants.empty
+                
+            }
+            else{
+                self.clearFilter()
+            }
         }else {
-            self.modelTxtField.text = self.viewModel.modelArr[indexPos]
+            self.modelTextField.text = self.viewModel.modelArr[indexPos]
             self.filterArrayWith(title: self.viewModel.modelArr[indexPos], makeDropDownIdentifier: makeDropDownIdentifier)
         }
         removeDropdown()
@@ -221,6 +228,16 @@ extension CarViewController: MakeDropDownDataSourceProtocol{
         }else {
             self.viewModel.fileteredArr = self.viewModel.datasource.filter({ $0.model == title })
         }
+        self.tableView.reloadData()
+    }
+    
+    func clearFilter() {
+        
+        self.makeTextField.text = Constants.empty
+        self.modelTextField.text = Constants.empty
+        self.viewModel.makeArr.remove(at: 0)
+        viewModel = CarViewModel()
+        //self.viewModel.fileteredArr = self.viewModel.datasource
         self.tableView.reloadData()
     }
 }

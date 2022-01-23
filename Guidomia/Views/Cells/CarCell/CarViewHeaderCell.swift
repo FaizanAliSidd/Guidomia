@@ -39,10 +39,6 @@ class CarViewHeaderCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     /// Method to prepare cell contents for reuse
     override func prepareForReuse() {
         
@@ -86,10 +82,4 @@ class CarViewHeaderCell: UITableViewCell {
         
         [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = Constants.empty})
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        
-        super.setSelected(selected, animated: animated)
-    }
-    
 }
