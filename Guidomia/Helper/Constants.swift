@@ -9,6 +9,7 @@
 import UIKit
 
 struct Constants {
+    
     static let carList = "car_list"
     static let star = "★"
     static let space = " "
@@ -35,6 +36,7 @@ struct Constants {
     static let dropDownCellIdentifier = "dropDownCell"
     static let dropDownCellNibName = "DropDownCell"
     static let dropDownIdentifier = "FilterDropDown"
+    static let dropDownRowHeight = 44.0
     static let carVCIdentifier = "CarVC"
     static let clearFilterString = "Clear Filter"
 }

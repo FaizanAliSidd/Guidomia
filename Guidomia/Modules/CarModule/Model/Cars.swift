@@ -29,18 +29,23 @@ struct Cars: Codable, Equatable {
     var rating: Int
     
     /// Show car model and make
+    /// - Returns: combined model and make string
     func carModelAndMake() -> String {
         return make + Constants.space + model
     }
     
     /// Display car price in a desired format
+    /// - Returns: display price of the car
     func carDisplayPrice() -> String {
+        
         let intPrice = Int((customerPrice/1000))
         return Constants.priceString + String(intPrice) + Constants.thousand
     }
     
     /// Get car rating
+    /// - Returns: car rating in proper format
     func carRating() -> String {
+        
         var star = Constants.star
         let spacePlusStar = Constants.space + star
         for _ in 1..<rating {
@@ -49,28 +54,33 @@ struct Cars: Codable, Equatable {
         return star
     }
     
+    /// Car pros hiding
+    /// - Returns: true if prosList is empty
     func carProsHide() -> Bool {
-        return prosList.count == 0 ? true: false
+        return prosList.count == 0
     }
     
+    /// Car cons hiding
+    /// - Returns: true if consList is empty
     func carConsHide() -> Bool {
-        return consList.count == 0 ? true: false
+        return consList.count == 0
     }
     
     /// Get car image
+    /// - Returns: car image object
     func carImage() -> UIImage {
         
         switch CarImages(rawValue: make) {
         case .bmw :
-            return CarImages.bmw.pngImage
+            return CarImages.bmw.image
         case .mercedes:
-            return CarImages.mercedes.pngImage
+            return CarImages.mercedes.image
         case .rangeRover:
-            return CarImages.rangeRover.pngImage
+            return CarImages.rangeRover.image
         case .alpine:
-            return CarImages.alpine.pngImage
+            return CarImages.alpine.image
         case .toyota:
-            return CarImages.toyota.pngImage
+            return CarImages.toyota.image
         default:
             return UIImage()
         }

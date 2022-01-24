@@ -92,6 +92,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49393442279DE8A300C1896F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				ABEF66E527969D8600A055BF /* LaunchScreen.storyboard */,
+				ABEF66E027969D6A00A055BF /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		49393443279EB44100C1896F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				49808700279EB99D00D77885 /* CarModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		4952AEF32798131C00D9B2BE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,12 +117,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		4952AEF827992FD400D9B2BE /* Json */ = {
+		4952AEF827992FD400D9B2BE /* JSON */ = {
 			isa = PBXGroup;
 			children = (
 				ABA30AA02796BB890037B5E7 /* car_list.json */,
 			);
-			path = Json;
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		4952AEF92799743100D9B2BE /* Extensions */ = {
@@ -160,6 +177,16 @@
 			path = DropDownCell;
 			sourceTree = "<group>";
 		};
+		49808700279EB99D00D77885 /* CarModule */ = {
+			isa = PBXGroup;
+			children = (
+				4952AEF32798131C00D9B2BE /* ViewModel */,
+				ABA30A9A2796B99C0037B5E7 /* Model */,
+				ABA30A9C2796B9DC0037B5E7 /* Views */,
+			);
+			path = CarModule;
+			sourceTree = "<group>";
+		};
 		ABA30A9A2796B99C0037B5E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,9 +226,8 @@
 		ABA30AA22796BC1C0037B5E7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				ABEF66E527969D8600A055BF /* LaunchScreen.storyboard */,
-				ABEF66E027969D6A00A055BF /* Main.storyboard */,
-				4952AEF827992FD400D9B2BE /* Json */,
+				49393442279DE8A300C1896F /* Storyboards */,
+				4952AEF827992FD400D9B2BE /* JSON */,
 				ABEF66E327969D8600A055BF /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -229,11 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				4952AEF92799743100D9B2BE /* Extensions */,
-				4952AEF32798131C00D9B2BE /* ViewModel */,
-				ABA30A9A2796B99C0037B5E7 /* Model */,
-				ABA30A9C2796B9DC0037B5E7 /* Views */,
-				4952AF08279A729000D9B2BE /* Utility */,
+				49393443279EB44100C1896F /* Modules */,
 				ABA30A9E2796BA2D0037B5E7 /* Helper */,
+				4952AF08279A729000D9B2BE /* Utility */,
 				ABA30AA22796BC1C0037B5E7 /* Resources */,
 				ABEF66DA27969D6A00A055BF /* AppDelegate.swift */,
 				ABEF66DC27969D6A00A055BF /* SceneDelegate.swift */,

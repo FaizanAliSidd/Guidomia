@@ -17,6 +17,7 @@ final class CarViewModel {
     private var selectedRow = IndexPath(row: 0, section: 0)
     var isExpandStatus = [Bool]()
     
+    /// CarViewModel initializer
     init() {
         
         datasource = Utility.shared.loadJson(resource: Constants.carList)
@@ -27,7 +28,8 @@ final class CarViewModel {
     }
     
     /// Set expand collapse status with indexpath
-    func setExpandCollapseStatus(indexPath: IndexPath){
+    /// - Parameter indexPath: selected indexpath of the row
+    func setExpandCollapseStatus(indexPath: IndexPath) {
         
         if self.selectedRow == indexPath { return }
         self.selectedRow = indexPath

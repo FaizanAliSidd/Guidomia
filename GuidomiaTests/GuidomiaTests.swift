@@ -181,19 +181,15 @@ class GuidomiaTests: XCTestCase {
     }
     
     func testClearFilter() {
+        
         carVC.makeTextField.text = "Benz"
         carVC.modelTextField.text = "c700"
         carVC.clearFilter()
         XCTAssertEqual(carVC.makeTextField.text, carVC.modelTextField.text)
     }
     
-    func testJSONFile() {
-        let data: [Cars] =  Utility.shared.loadJson(resource: "WrongJSON")
-        XCTAssertTrue(data == [])
+    func testsetExpandCollapseStatus() {
         
-    }
-    
-    func testCarViewModel() {
         let indexPath = IndexPath(row: 1, section: 1)
         carViewModel.setExpandCollapseStatus(indexPath: indexPath)
         XCTAssertTrue(carViewModel.isExpandStatus[1] == true)

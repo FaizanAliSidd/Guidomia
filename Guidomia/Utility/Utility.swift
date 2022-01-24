@@ -4,7 +4,6 @@
 //
 //  Created by Faizan Ali on 21/01/22.
 //  Copyright © 2022 Faizan. All rights reserved.
-//
 
 import Foundation
 import UIKit

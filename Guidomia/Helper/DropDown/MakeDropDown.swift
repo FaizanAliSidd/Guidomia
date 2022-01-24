@@ -43,9 +43,9 @@ class MakeDropDown: UIView{
     
     //MARK: - DropDown Methods
     
-    // Make Table View Programatically
-    
-    func setUpDropDown(viewPositionReference: CGRect,  offset: CGFloat){
+    /// Make Table View Programatically
+    func setUpDropDown(viewPositionReference: CGRect,  offset: CGFloat) {
+        
         self.addBorders()
         self.addShadowToView()
         self.frame = CGRect(x: viewPositionReference.minX, y: viewPositionReference.maxY + offset, width: 0, height: 0)
@@ -66,8 +66,9 @@ class MakeDropDown: UIView{
         
     }
     
-    // Shows Drop Down Menu
-    func showDropDown(height: CGFloat){
+    /// Shows Drop Down Menu
+    func showDropDown(height: CGFloat) {
+        
         if isDropDownPresent{
             self.hideDropDown()
         }else{
@@ -85,9 +86,9 @@ class MakeDropDown: UIView{
         
     }
     
-    // Use this method if you want change height again and again
-    // For eg in UISearchBar DropDownMenu
-    func reloadDropDown(height: CGFloat){
+    /// Use this method if you want change height again and again
+    func reloadDropDown(height: CGFloat) {
+        
         self.frame = CGRect(x: (self.viewPositionRef?.minX)!, y: (self.viewPositionRef?.maxY)!
                             + self.offset, width: width, height: 0)
         self.dropDownTableView?.frame = CGRect(x: 0, y: 0, width: width, height: 0)
@@ -99,14 +100,15 @@ class MakeDropDown: UIView{
         })
     }
     
-    //Sets Row Height of your Custom XIB
+    ///Sets Row Height of your Custom XIB
     func setRowHeight(height: CGFloat){
         self.dropDownTableView?.rowHeight = height
         self.dropDownTableView?.estimatedRowHeight = height
     }
     
-    //Hides DropDownMenu
-    func hideDropDown(){
+    ///Hides DropDownMenu
+    func hideDropDown() {
+        
         isDropDownPresent = false
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveLinear
                        , animations: {
@@ -115,9 +117,9 @@ class MakeDropDown: UIView{
         })
     }
     
-    // Removes DropDown Menu
-    // Use it only if needed
-    func removeDropDown(){
+    /// Removes DropDown Menu
+    func removeDropDown() {
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveLinear
                        , animations: {
             self.dropDownTableView?.frame.size = CGSize(width: 0, height: 0)
@@ -150,17 +152,3 @@ extension MakeDropDown: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-//MARK: - UIView Extension
-extension UIView{
-    func addBorders(borderWidth: CGFloat = 0.2, borderColor: CGColor = UIColor.lightGray.cgColor){
-        self.layer.borderWidth = borderWidth
-        self.layer.borderColor = borderColor
-    }
-    
-    func addShadowToView(shadowRadius: CGFloat = 2, alphaComponent: CGFloat = 0.6) {
-        self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: alphaComponent).cgColor
-        self.layer.shadowOffset = CGSize(width: -1, height: 2)
-        self.layer.shadowRadius = shadowRadius
-        self.layer.shadowOpacity = 1
-    }
-}

@@ -10,6 +10,7 @@ import UIKit
 
 class CarViewHeaderCell: UITableViewCell {
 
+    /// Outlets
     @IBOutlet weak var cellContainerView: UIView!
     @IBOutlet weak var carName: UILabel!
     @IBOutlet weak var carPrice: UILabel!
@@ -21,13 +22,11 @@ class CarViewHeaderCell: UITableViewCell {
     @IBOutlet var conDetails: UILabel!
     @IBOutlet weak var separatorLabel: UILabel!
     @IBOutlet weak var prosConsStackView: UIStackView!
-    
-    
+        
     public var car: Cars? {
         didSet { self.displayHeaderData() }
     }
     
-    /// Bool value to check if expanded or not
     public var isExpanded: Bool? {
         didSet {
             if self.isExpanded!{
@@ -62,7 +61,6 @@ class CarViewHeaderCell: UITableViewCell {
         
         proLabel.isHidden = car?.carProsHide() ?? false
         conLabel.isHidden = car?.carConsHide() ?? false
-        
         if !proLabel.isHidden {
             if let proArray = car?.prosList.filter({ $0.isEmpty == false }) {
                 proLabel.text = Constants.prosString
@@ -79,7 +77,6 @@ class CarViewHeaderCell: UITableViewCell {
     
     /// Hide pros and cons data
     private func hideProsConsDataData() {
-        
         [proLabel, proDetails, conLabel, conDetails].forEach({$0?.text = Constants.empty})
     }
 }

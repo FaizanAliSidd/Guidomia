@@ -10,6 +10,7 @@ import UIKit
 
 class CarViewController: UIViewController {
     
+    /// Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var makeShadowView: UIView!
     @IBOutlet weak var modelShadowView: UIView!
@@ -18,6 +19,8 @@ class CarViewController: UIViewController {
     @IBOutlet weak var modelTextField: UITextField!
     @IBOutlet weak var makeButton: UIButton!
     @IBOutlet weak var modelButton: UIButton!
+    
+    /// Other variables, constants, and instances
     var viewModel = CarViewModel()
     let dropDown = MakeDropDown()
     let offset = CGSize.zero
@@ -85,6 +88,8 @@ class CarViewController: UIViewController {
     }
     
     /// Make filter button action
+    /// - Parameters:
+    ///  - sender: Button which is tapped
     @IBAction func makeBtnAction(_ sender: UIButton) {
         
         if self.isDropdownShown {
@@ -101,11 +106,13 @@ class CarViewController: UIViewController {
     }
     
     /// Model filter button action
+    /// - Parameters:
+    ///  - sender: Button which is tapped
     @IBAction func modelBtnAction(_ sender: UIButton) {
         
         if self.isDropdownShown {
             removeDropdown()
-        }else {
+        } else {
             self.showDropDownFor(view: modelShadowView,
                                  withIdentifier: Constants.modelDropDownIdentifier,
                                  dataArray: self.viewModel.modelArr)
@@ -133,9 +140,7 @@ class CarViewController: UIViewController {
 //MARK:- TableView DataSource and Delegate
 extension CarViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         viewModel.fileteredArr.count
     }
     
@@ -148,9 +153,7 @@ extension CarViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return UITableView.automaticDimension
     }
    
@@ -166,15 +169,18 @@ extension CarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
         return CGFloat.leastNonzeroMagnitude
     }
-    
 }
 
 //MARK:- DropDown DataSource
 extension CarViewController: MakeDropDownDataSourceProtocol{
     
+    /// Method used to display title in the filter dropdown
+    /// - Parameters:
+    ///  - cell: cell on which title is  to be shown
+    ///  - indexPos: Position of selected item in the dropdown
+    ///  - makeDropDownIdentifier: String dropdown identifier to know which dropdown is chosen
     func getDataToDropDown(cell: UITableViewCell, indexPos: Int, makeDropDownIdentifier: String) {
         
         if makeDropDownIdentifier == Constants.makeDropDownIdentifier {
@@ -187,6 +193,9 @@ extension CarViewController: MakeDropDownDataSourceProtocol{
         }
     }
     
+    /// Method to resolve to number of items in the dropdown
+    /// - Parameter makeDropDownIdentifier: String dropdown identifier to know which dropdown is chosen
+    /// - Returns: Number of rows the dropdown
     func numberOfRows(makeDropDownIdentifier: String) -> Int {
         
         if makeDropDownIdentifier == Constants.makeDropDownIdentifier {
@@ -196,6 +205,10 @@ extension CarViewController: MakeDropDownDataSourceProtocol{
         }
     }
     
+    /// Method called when selection is made in the filter dropdown
+    /// - Parameters:
+    ///  - indexPos: Position of selected item in the dropdown
+    ///  - makeDropDownIdentifier: String dropdown identifier to know which dropdown is chosen
     func selectItemInDropDown(indexPos: Int, makeDropDownIdentifier: String) {
         
         if makeDropDownIdentifier == Constants.makeDropDownIdentifier {
@@ -210,7 +223,6 @@ extension CarViewController: MakeDropDownDataSourceProtocol{
                     }
                 })
                 self.modelTextField.text = Constants.empty
-                
             }
             else{
                 self.clearFilter()
@@ -222,7 +234,12 @@ extension CarViewController: MakeDropDownDataSourceProtocol{
         removeDropdown()
     }
     
+    /// Method used to filter the data in table view
+    /// - Parameters:
+    ///  - title: Title string to match the selection with
+    ///  - makeDropDownIdentifier: String dropdown identifier to know which dropdown is chosen
     func filterArrayWith(title: String, makeDropDownIdentifier: String) {
+        
         if makeDropDownIdentifier == Constants.makeDropDownIdentifier {
             self.viewModel.fileteredArr = self.viewModel.datasource.filter({ $0.make == title })
         }else {
@@ -231,13 +248,13 @@ extension CarViewController: MakeDropDownDataSourceProtocol{
         self.tableView.reloadData()
     }
     
+    /// Clear applied filters
     func clearFilter() {
         
         self.makeTextField.text = Constants.empty
         self.modelTextField.text = Constants.empty
         self.viewModel.makeArr.remove(at: 0)
         viewModel = CarViewModel()
-        //self.viewModel.fileteredArr = self.viewModel.datasource
         self.tableView.reloadData()
     }
 }

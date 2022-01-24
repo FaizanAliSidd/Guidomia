@@ -10,7 +10,7 @@ import UIKit
 
 class DropDownCell: UITableViewCell {
 
-    static let dropDownRowHeight = 44.0
+    static let dropDownRowHeight = Constants.dropDownRowHeight
     @IBOutlet weak var dropDownTitle: UILabel!
 
 }

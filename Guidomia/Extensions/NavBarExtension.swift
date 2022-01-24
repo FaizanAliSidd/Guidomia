@@ -22,6 +22,7 @@ extension UINavigationController {
     }
     
     /// Set nav bar title to left with custom font
+    /// - Parameter text: title text to be shown in the nav bar
     func setNavBarTitle(label text: String) {
         
         self.navigationBar.isTranslucent = false
