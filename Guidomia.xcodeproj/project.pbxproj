@@ -11,7 +11,6 @@
 		492F2BAC2796FB5700FD0852 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F2BAB2796FB5700FD0852 /* Constants.swift */; };
 		492F2BAF2797123200FD0852 /* CarViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F2BAD2797123200FD0852 /* CarViewHeaderCell.swift */; };
 		492F2BB02797123200FD0852 /* CarViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 492F2BAE2797123200FD0852 /* CarViewHeaderCell.xib */; };
-		492F2BB227971B8000FD0852 /* CarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F2BB127971B8000FD0852 /* CarViewModel.swift */; };
 		492F2BBA27972D8C00FD0852 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F2BB927972D8C00FD0852 /* NSAttributedString.swift */; };
 		4952AEFB2799745E00D9B2BE /* NavBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AEFA2799745E00D9B2BE /* NavBarExtension.swift */; };
 		4952AEFF2799AAEE00D9B2BE /* MakeDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AEFE2799AAEE00D9B2BE /* MakeDropDown.swift */; };
@@ -22,6 +21,7 @@
 		4978E4D4279D63B700A57A0D /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978E4D3279D63B700A57A0D /* JSONTests.swift */; };
 		4978E4D6279D65BF00A57A0D /* invalid_car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 4978E4D5279D65BF00A57A0D /* invalid_car_list.json */; };
 		4978E4D8279D65EC00A57A0D /* car_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978E4D7279D65EC00A57A0D /* car_list.swift */; };
+		49C67A84279EC18900D15E4B /* CarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C67A83279EC18900D15E4B /* CarViewModel.swift */; };
 		ABA30AA12796BB890037B5E7 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = ABA30AA02796BB890037B5E7 /* car_list.json */; };
 		ABA30AA42796BCF60037B5E7 /* CarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA30AA32796BCF60037B5E7 /* CarImages.swift */; };
 		ABEF66DB27969D6A00A055BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEF66DA27969D6A00A055BF /* AppDelegate.swift */; };
@@ -48,7 +48,6 @@
 		492F2BAB2796FB5700FD0852 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Guidomia/Helper/Constants.swift; sourceTree = SOURCE_ROOT; };
 		492F2BAD2797123200FD0852 /* CarViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewHeaderCell.swift; sourceTree = "<group>"; };
 		492F2BAE2797123200FD0852 /* CarViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarViewHeaderCell.xib; sourceTree = "<group>"; };
-		492F2BB127971B8000FD0852 /* CarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarViewModel.swift; path = Guidomia/ViewModel/CarViewModel.swift; sourceTree = SOURCE_ROOT; };
 		492F2BB927972D8C00FD0852 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSAttributedString.swift; path = Guidomia/Helper/NSAttributedString.swift; sourceTree = SOURCE_ROOT; };
 		4952AEFA2799745E00D9B2BE /* NavBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarExtension.swift; sourceTree = "<group>"; };
 		4952AEFE2799AAEE00D9B2BE /* MakeDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeDropDown.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		4978E4D3279D63B700A57A0D /* JSONTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTests.swift; sourceTree = "<group>"; };
 		4978E4D5279D65BF00A57A0D /* invalid_car_list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid_car_list.json; sourceTree = "<group>"; };
 		4978E4D7279D65EC00A57A0D /* car_list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = car_list.swift; sourceTree = "<group>"; };
+		49C67A83279EC18900D15E4B /* CarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewModel.swift; sourceTree = "<group>"; };
 		ABA30AA02796BB890037B5E7 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
 		ABA30AA32796BCF60037B5E7 /* CarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImages.swift; sourceTree = "<group>"; };
 		ABEF66D727969D6900A055BF /* Guidomia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidomia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,7 +112,7 @@
 		4952AEF32798131C00D9B2BE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				492F2BB127971B8000FD0852 /* CarViewModel.swift */,
+				49C67A83279EC18900D15E4B /* CarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -383,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C67A84279EC18900D15E4B /* CarViewModel.swift in Sources */,
 				4952AF072799BBEE00D9B2BE /* UIViewExtension.swift in Sources */,
 				4952AF0A279A72C500D9B2BE /* Utility.swift in Sources */,
 				ABEF66DF27969D6A00A055BF /* CarViewController.swift in Sources */,
@@ -390,7 +391,6 @@
 				4952AEFB2799745E00D9B2BE /* NavBarExtension.swift in Sources */,
 				ABA30AA42796BCF60037B5E7 /* CarImages.swift in Sources */,
 				4952AEFF2799AAEE00D9B2BE /* MakeDropDown.swift in Sources */,
-				492F2BB227971B8000FD0852 /* CarViewModel.swift in Sources */,
 				4952AF042799AE9D00D9B2BE /* DropDownCell.swift in Sources */,
 				492F2BAF2797123200FD0852 /* CarViewHeaderCell.swift in Sources */,
 				492F2BAC2796FB5700FD0852 /* Constants.swift in Sources */,
